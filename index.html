@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Rock the Rocks</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="jquery.ui.touch-punch.min.js"></script>
+        <script src="jquery.alterclass.js"></script>
+        <link rel="stylesheet" href="rockgame.css">
+        <script src="rockgame.js"></script>
+    </head>
+    <body>
+        <div id="instructionDialog" title="How to play" style="display: none;">
+            The goal of the game is to correctly identify rocks that appear on your screen.
+            <p>
+            You will see a picture of the rock and some information about it. Click
+            on the button with the name of the rock.
+            <p>
+            Try to get a perfect score!
+            <p>
+            <center><button onclick="nextRock();">OK</button></center>
+        </div>
+        <div id="goodJobDialog" title="Good job!" style="display: none;">
+            Great job! Let's find another rock.
+            <p>
+            <center><button onclick="nextRock();">OK</button></center>
+        </div>
+        <div id="oopsDialog" title="Oops!" style="display: none;">
+            Whoops! That wasn't the right rock.
+            <p>
+            The correct rock was actually <b><span id="oopsText"></span></b>.
+            <p>
+            <center><button onclick="nextRock();">OK</button></center>
+        </div>
+        <div id="endDialog" title="Congratulations!" style="display: none;">
+            Awesome! You really rock!
+            <p>
+            <center><button onclick="window.location.reload(true);">Play again</button></center>
+        </div>
+        <div id="header">Score: <span id="score-right">0</span>/<span id="score-total">0</span></div>
+        <div class="main-screen">
+            <div class="content">
+                <div class="rock-part" id="rock-list">
+                    <div class="rock-type">
+                        Igneous
+                        <p>
+                        <button class="rock-button">Granite</button>
+                        <button class="rock-button">Basalt</button>
+                        <button class="rock-button">Obsidian</button>
+                        <button class="rock-button">Pumice</button>
+                        <button class="rock-button">Quartz</button>
+                    </div>
+                    <div class="rock-type">
+                        Metamorphic
+                        <p>
+                        <button class="rock-button">Slate</button>
+                        <button class="rock-button">Schist</button>
+                        <button class="rock-button">Magnatite</button>
+                        <button class="rock-button">Marble</button>
+                        <button class="rock-button">Graphite</button>
+                    </div>
+                    <div class="rock-type">
+                        Sedimentary
+                        <p>
+                        <button class="rock-button">Chalk</button>
+                        <button class="rock-button">Coal</button>
+                        <button class="rock-button">Sandstone</button>
+                        <button class="rock-button">Shale</button>
+                        <button class="rock-button">Limestone</button>
+                    </div>
+                </div>
+                <div class="rock-info">
+                    <div id="rock-picture">
+                        <img src="granite.jpg" id="rock-img" alt="Rock"/>
+                    </div>
+                    <div id="rock-details">
+                        This is a rock.
+                        <p>
+                        It doesn't come from China.
+                        <p>
+                        I didn't make the image.
+                        <p>
+                        It might have some connection to Pi.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
