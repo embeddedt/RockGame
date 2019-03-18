@@ -35,6 +35,7 @@ var rockDescriptions = [
     "Color: dark gray (shiny)\nHardness: 2.5-5.5\nVery fine-grained.\nUsed in shingles and floors."
 ];
 
+var tries = 0;
 var numRight = 0;
 var currentRock = -1;
 
@@ -43,6 +44,7 @@ var beep;
 var yourock;
 
 function nextRock() {
+    tries = 0;
     applause.pause();
     beep.pause();
     try { $("#goodJobDialog").dialog("close"); } catch(e) {}
@@ -64,8 +66,6 @@ $(function() {
     beep = new Audio("beep.mp3");
     yourock = new Audio("yourock.mp3");
     $(".rock-button").click(function() {
-        console.log($(this).text());
-        console.log(rockNames[currentRock]);
         if($(this).text() === rockNames[currentRock]) {
             applause.currentTime = 0;
             applause.play();
@@ -73,10 +73,15 @@ $(function() {
             numRight++;
             $("#score-right").text(numRight);
         } else {
-            beep.currentTime = 0;
-            beep.play();
-            $("#oopsText").text(rockNames[currentRock]);
-            $("#oopsDialog").dialog({ modal: true, height: 'auto' });
+            if(tries == 2) {
+                beep.currentTime = 0;
+                beep.play();
+                $("#oopsText").text(rockNames[currentRock]);
+                $("#oopsDialog").dialog({ modal: true, height: 'auto' });
+            } else {
+                tries++;
+                $("#tryAgainDialog").dialog({ modal: true });
+            }
         }
     });
     $("#instructionDialog").dialog({ modal: true, height: 'auto' });    

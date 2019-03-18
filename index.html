@@ -33,6 +33,11 @@ and open the template in the editor.
             <p>
             <center><button onclick="nextRock();">OK</button></center>
         </div>
+        <div id="tryAgainDialog" title="Try again" style="display: none;">
+            Nope! Give it another try.
+            <p>
+            <center><button onclick="$('#tryAgainDialog').dialog('close');">OK</button></center>
+        </div>
         <div id="oopsDialog" title="Oops!" style="display: none;">
             Whoops! That wasn't the right rock.
             <p>
